@@ -17,24 +17,15 @@ public class MemberDao {
 
             @Override
             public Member mapRow(ResultSet resultSet, int rowNum) throws Exception {
-                return null;
-            }
-        },null);
-    }
-
-    public List<?> query11(){
-        String sql = "select * from t_member";
-        return JdbcTemplate.executeQuery(sql,new RowMapper<Member>(){
-            @Override
-            public Member mapRow(ResultSet rs, int rowNum) throws Exception {
                 Member member = new Member();
-                member.setUsername(rs.getString("username"));
-                member.setPassword(rs.getString("password"));
-                member.setAge(rs.getInt("age"));
-                member.setAddr(rs.getString("addr"));
+                member.setUsername(resultSet.getString("username"));
+                member.setPassword(resultSet.getString("password"));
+                member.setAge(resultSet.getInt("age"));
+                member.setAddr(resultSet.getString("addr"));
                 return member;
             }
         },null);
     }
+
 
 }
